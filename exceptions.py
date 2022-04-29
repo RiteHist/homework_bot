@@ -34,7 +34,28 @@ class UnknownHomeworkStatus(Exception):
 class HomeworksNotInList(Exception):
     """
     Иключение для ситуации, когда домашние работы
-    в ответе API не в виде списка."""
+    в ответе API не в виде списка.
+    """
 
     def __str__(self):
         return 'Домашние работы в ответе API не в виде списка'
+
+
+class MessageNotDelivered(Exception):
+    """
+    Исключение при неудачной отправке сообщения.
+    """
+
+    def __init__(self, message):
+        self.message = message
+        super().__init__()
+
+    def __str__(self):
+        return f'Не удалось отправить сообщение "{self.message}"'
+
+
+class ConnectionError(Exception):
+    """Исключение при ошибке соединения с эндпоинтом."""
+
+    def __str__(self):
+        return 'Ошибка соединения с эндпоинтом.'
